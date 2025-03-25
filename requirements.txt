@@ -1,8 +1,7 @@
 pandas
 numpy
 seaborn
-matplotlib.pyplot
-matplotlib.dates
+matplotlib
 zipfile
 sys
 os
@@ -12,7 +11,7 @@ math
 joblib
 logging
 xgboost
-sklearn.model_selection
+sklearn
 requests
 re
 dotenv
