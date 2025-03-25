@@ -16,7 +16,7 @@ logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(
 class PySimFin():
     def __init__(self):
         #self.api_key = os.getenv('API_KEY') # for running locally
-        self.api_key = st.secrets["SIMFIN_API_KEY"]
+        self.api_key = st.secrets["API_KEY"]
         self.url = "https://backend.simfin.com/api/v3/companies"
         self.headers = {"accept": "application/json", "Authorization": f"Bearer {self.api_key}"}
 
