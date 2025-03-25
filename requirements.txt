@@ -1,0 +1,17 @@
+pandas
+numpy
+seaborn
+matplotlib
+zipfile
+sys
+os
+streamlit
+datetime
+math
+joblib
+logging
+xgboost
+sklearn
+requests
+re
+dotenv
