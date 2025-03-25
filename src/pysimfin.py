@@ -4,6 +4,7 @@ import os
 import logging
 import re
 from dotenv import load_dotenv
+import streamlit as st
 
 # Load environment variables
 load_dotenv()
@@ -14,9 +15,10 @@ logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(
 
 class PySimFin():
     def __init__(self):
-        self.api_key = os.getenv('API_KEY')
+        #self.api_key = os.getenv('API_KEY') # for running locally
+        self.api_key = st.secrets["SIMFIN_API_KEY"]
         self.url = "https://backend.simfin.com/api/v3/companies"
-        self.headers = {"accept": "application/json", "Authorization": self.api_key}
+        self.headers = {"accept": "application/json", "Authorization": f"Bearer {self.api_key}"}
 
     def get_available_tickers(self):
         unique_tickers = pd.read_csv(f'./data/raw/us-companies.csv', sep=';', index_col=0).index.unique().to_list()[1:]
