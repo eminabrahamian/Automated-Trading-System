@@ -133,7 +133,7 @@ elif page == "Trading Advice":
 
     try:
         # Get path to the model relative to this script and load model
-        model_path = os.path.join(os.path.dirname(__file__), "src", "optimized_model.joblib")
+        model_path = os.path.join("src", "optimized_model.joblib")
         model = load(model_path)
 
         if stock_data is not None and not stock_data.empty:
@@ -205,7 +205,8 @@ elif page == "Trading Advice":
             ticker=backtest_ticker,
             start_date=backtest_start,
             end_date=end_date,
-            initial_capital=initial_capital
+            initial_capital=initial_capital,
+            model_path = model_path
         )
 
         if error_msg:
