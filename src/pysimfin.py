@@ -27,8 +27,31 @@ class PySimFin():
     def get_available_dates(self, ticker):
         url_endpoint = self.url + f'/prices/compact?&ticker={ticker}'
         response = requests.get(url_endpoint, headers=self.headers)
-        df = pd.DataFrame(response.json()[0]['data'], columns=response.json()[0]['columns'])
-        return pd.date_range(start=df['Date'].min(), end=df['Date'].max()).strftime('%Y-%m-%d').tolist()
+
+        try:
+            response.raise_for_status()
+            data = response.json()
+            df = pd.DataFrame(data[0]['data'], columns=data[0]['columns'])
+            return pd.date_range(start=df['Date'].min(), end=df['Date'].max()).strftime('%Y-%m-%d').tolist()
+
+        except requests.exceptions.RequestException as e:
+            print("❌ RequestException:", e)
+            print("⚠️ Status Code:", response.status_code)
+            print("⚠️ Response Text:", response.text[:300])  # truncate long errors
+
+        except (KeyError, IndexError) as e:
+            print("❌ Data parsing error:", e)
+            print("⚠️ Response JSON (raw):", response.text)
+
+        except ValueError as e:
+            print("❌ JSON decode error:", e)
+            print("⚠️ Response Text (raw):", response.text)
+
+    #def get_available_dates(self, ticker):
+    #    url_endpoint = self.url + f'/prices/compact?&ticker={ticker}'
+    #    response = requests.get(url_endpoint, headers=self.headers)
+    #    df = pd.DataFrame(response.json()[0]['data'], columns=response.json()[0]['columns'])
+    #    return pd.date_range(start=df['Date'].min(), end=df['Date'].max()).strftime('%Y-%m-%d').tolist()
 
     def validate_inputs(self, ticker, start, end):
         """Validates the ticker and date inputs."""
