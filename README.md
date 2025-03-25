@@ -13,12 +13,11 @@ This project is a real-time stock analysis and trading strategy dashboard built 
 automated-trading-system/
 ├── streamlit_app.py              # Main Streamlit dashboard
 ├── src/
-│   ├── api_wrapper.py            # API interface (SimFin)
 │   ├── etl.py                    # Extract, Transform, Load logic
 │   ├── model.py                  # ML model training & loading
 │   ├── backtesting.py            # Backtest strategy logic
 │   ├── optimized_model.joblib    # Trained ML model
-│   └── pysimfin.py               # SimFin API helper functions
+│   └── pysimfin.py               # SimFin API wrapper
 ├── data/
 │   ├── raw/                      # Input data (e.g., CSVs, ZIPs)
 │   └── processed/                # Cleaned datasets
@@ -110,12 +109,5 @@ API_KEY = "your_simfin_key_here"
 ---
 
 ## 🤝 Credits
-
-Created by [@eminabrahamian](https://github.com/eminabrahamian)  
-Built as part of IE MBD coursework (Data Analytics II)
-
----
-
-## 📝 License
-
-This project is licensed under the MIT License.
+IE MBD Term 2 – Group 7
+Built as part of IE MBD coursework (Python for Data Analysis II)
