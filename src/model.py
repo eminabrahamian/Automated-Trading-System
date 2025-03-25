@@ -7,7 +7,7 @@ from joblib import dump, load
 
 MODEL_FILENAME = 'optimized_model.joblib'
 
-df_na_filled = pd.read_csv('./data/processed/final_etl_df.csv')
+df_na_filled = pd.read_csv('../data/processed/final_etl_df.csv')
 
 def train_initial_model(df_na_filled):
     y = df_na_filled['next_day_close']

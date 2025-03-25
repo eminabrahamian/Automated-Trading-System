@@ -48,10 +48,10 @@ def transformation(df):
     return df
 
 def load_and_prepare_data():
-    companies_df = pd.read_csv('./data/raw/us-companies.csv', sep=';', index_col=0)
+    companies_df = pd.read_csv('../data/raw/us-companies.csv', sep=';', index_col=0)
 
-    zip_path = "data/raw/us-shareprices-daily.csv.zip"
-    extract_to = "data/raw/"
+    zip_path = "../data/raw/us-shareprices-daily.csv.zip"
+    extract_to = "../data/raw/"
 
     # Unzip the file if not already extracted
     csv_file = os.path.join(extract_to, "us-shareprices-daily.csv")
@@ -59,7 +59,7 @@ def load_and_prepare_data():
         with zipfile.ZipFile(zip_path, 'r') as zip_ref:
             zip_ref.extractall(extract_to)
 
-    shareprices_df = pd.read_csv('./data/raw/us-shareprices-daily.csv', sep=';', parse_dates=['Date'], index_col=0)
+    shareprices_df = pd.read_csv('../data/raw/us-shareprices-daily.csv', sep=';', parse_dates=['Date'], index_col=0)
     shareprices_df = shareprices_df[shareprices_df.index=='TSLA']
     shareprices_df = shareprices_df.set_index('Date', drop=True)
     companies_df = companies_df[~companies_df.index.isna()]
@@ -81,5 +81,5 @@ def load_and_prepare_data():
 
 if __name__ == '__main__':
     df_final = load_and_prepare_data()
-    df_final.to_csv('./data/processed/final_etl_df.csv', index=True)
+    df_final.to_csv('../data/processed/final_etl_df.csv', index=True)
     print("Data saved to 'final_etl_df.csv'.")
