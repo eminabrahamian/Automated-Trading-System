@@ -2,14 +2,18 @@ import streamlit as st
 import datetime
 import math
 import pandas as pd
-from pysimfin import PySimFin
 import matplotlib.pyplot as plt
 import matplotlib.dates as mdates
 from joblib import load
-from etl import transformation
 import logging
+import sys
+import os
 
-# NEW: Import backtesting function
+# Import modules in src
+sys.path.append(os.path.join(os.path.dirname(__file__), "src"))
+
+from pysimfin import PySimFin
+from etl import transformation
 from backtesting import backtest_strategy
 
 # Configure logging
@@ -128,7 +132,9 @@ elif page == "Trading Advice":
     budget = st.number_input("Enter your trading budget (USD):", min_value=1.0)
 
     try:
-        model = load("optimized_model.joblib")
+        # Get path to the model relative to this script and load model
+        model_path = os.path.join(os.path.dirname(__file__), "src", "optimized_model.joblib")
+        model = load(model_path)
 
         if stock_data is not None and not stock_data.empty:
             df_pred = stock_data.copy()
