@@ -109,5 +109,5 @@ API_KEY = "your_simfin_key_here"
 ---
 
 ## 🤝 Credits
-IE MBD Term 2 – Group 7
-Built as part of IE MBD coursework (Python for Data Analysis II)
+- IE MBD Term 2 – Group 7
+- Built as part of IE MBD coursework (Python for Data Analysis II)
