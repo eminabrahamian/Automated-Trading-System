@@ -11,20 +11,24 @@ This project is a real-time stock analysis and trading strategy dashboard built 
 
 ```
 automated-trading-system/
-├── streamlit_app.py              # Main Streamlit dashboard
+├── streamlit_app.py                          # Main Streamlit dashboard
 ├── src/
-│   ├── etl.py                    # Extract, Transform, Load logic
-│   ├── model.py                  # ML model training & loading
-│   ├── backtesting.py            # Backtest strategy logic
-│   ├── optimized_model.joblib    # Trained ML model
-│   └── pysimfin.py               # SimFin API wrapper
+│   ├── etl.py                                # Extract, Transform, Load logic
+│   ├── model.py                              # ML model training & loading
+│   ├── backtesting.py                        # Backtest strategy logic
+│   ├── optimized_model.joblib                # Trained ML model
+│   └── pysimfin.py                           # SimFin API wrapper
 ├── data/
-│   ├── raw/                      # Input data (e.g., CSVs, ZIPs)
-│   └── processed/                # Cleaned datasets
+│   ├── raw/                                  # Input data (e.g., CSVs, ZIPs)
+│       ├── us_companies.csv                  # Bulk download company data from SimFin
+│       └── us_shareprices-daily.csv.zip      # Bulk download shareprice data from SimFin (zipped)
+│   └── processed/                            # Cleaned datasets
+│       └── final_etl_df.csv                  # Cleaned shareprice data (from etl.py)
 ├── .streamlit/
-│   └── secrets.toml              # API key for SimFin (Streamlit Cloud)
-├── requirements.txt             # Python dependencies
-└── README.md                    # This file
+│   └── secrets.toml                          # API key for SimFin (Streamlit Cloud)
+├── ETL Walkthrough.ipynb                     # Fully commented walkthrough of our ETL process
+├── requirements.txt                          # Python dependencies
+└── README.md                                 # This file
 ```
 
 ---
