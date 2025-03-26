@@ -1,4 +1,3 @@
-
 # 🚀 Automated Trading System: Real-Time Stock Analysis Dashboard
 
 This project is a real-time stock analysis and trading strategy dashboard built using **Streamlit**, designed to explore U.S. equities data, visualize price trends, and simulate trading strategies with machine learning models.
@@ -72,6 +71,7 @@ streamlit run streamlit_app.py
 ```
 
 > The app will launch in your browser at `http://localhost:8501`
+> > *Be patient with load times and errors as the API gets rate limited quite often*
 
 ---
 
